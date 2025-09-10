@@ -62,7 +62,7 @@ provider "template" {
 
 ## Example
 
-A working [example](https://github.com/silinternational/terraform-aws-phpmyadmin/tree/main/example) usage of this module is included in the source repository.
+A working [example](https://github.com/sil-org/terraform-aws-phpmyadmin/tree/main/example) usage of this module is included in the source repository.
 
 ## More info
 

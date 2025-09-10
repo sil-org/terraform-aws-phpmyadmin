@@ -19,7 +19,7 @@ module "phpmyadmin" {
  * Create ECS cluster
  */
 module "ecscluster" {
-  source   = "github.com/silinternational/terraform-modules//aws/ecs/cluster?ref=3.3.2"
+  source   = "github.com/sil-org/terraform-modules//aws/ecs/cluster?ref=3.3.2"
   app_name = var.app_name
   app_env  = var.app_env
 }
@@ -28,7 +28,7 @@ module "ecscluster" {
  * Create VPC
  */
 module "vpc" {
-  source    = "github.com/silinternational/terraform-modules//aws/vpc?ref=3.3.2"
+  source    = "github.com/sil-org/terraform-modules//aws/vpc?ref=3.3.2"
   app_name  = var.app_name
   app_env   = var.app_env
   aws_zones = ["us-east-1"]
@@ -38,7 +38,7 @@ module "vpc" {
  * Create application load balancer for public access
  */
 module "alb" {
-  source          = "github.com/silinternational/terraform-modules//aws/alb?ref=3.3.2"
+  source          = "github.com/sil-org/terraform-modules//aws/alb?ref=3.3.2"
   app_name        = var.app_name
   app_env         = var.app_env
   internal        = "false"
@@ -52,7 +52,7 @@ module "alb" {
  * Security group to limit traffic to Cloudflare IPs
  */
 module "cloudflare-sg" {
-  source = "github.com/silinternational/terraform-modules//aws/cloudflare-sg?ref=3.3.2"
+  source = "github.com/sil-org/terraform-modules//aws/cloudflare-sg?ref=3.3.2"
   vpc_id = module.vpc.id
 }
 
@@ -72,7 +72,7 @@ resource "random_id" "db_root_pass" {
 }
 
 module "rds" {
-  source                  = "github.com/silinternational/terraform-modules//aws/rds/mariadb?ref=3.3.2"
+  source                  = "github.com/sil-org/terraform-modules//aws/rds/mariadb?ref=3.3.2"
   app_name                = var.app_name
   app_env                 = var.app_env
   db_name                 = "pma-test-db"

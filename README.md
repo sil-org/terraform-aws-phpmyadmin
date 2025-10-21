@@ -66,4 +66,4 @@ A working [example](https://github.com/sil-org/terraform-aws-phpmyadmin/tree/mai
 
 ## More info
 
-More information is available at the [Terraform Registry](https://registry.terraform.io/modules/silinternational/phpmyadmin/aws/latest)
+More information is available at the [Terraform Registry](https://registry.terraform.io/modules/sil-org/phpmyadmin/aws/latest)

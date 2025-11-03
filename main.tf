@@ -34,6 +34,10 @@ resource "aws_alb_listener_rule" "phpmyadmin" {
       values = ["${var.subdomain}.${var.cloudflare_domain}"]
     }
   }
+
+  lifecycle {
+    replace_triggered_by = [aws_alb_target_group.phpmyadmin]
+  }
 }
 
 module "ecsservice" {

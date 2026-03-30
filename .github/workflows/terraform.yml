@@ -25,11 +25,11 @@ jobs:
     steps:
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v6
 
     # Install the earliest version of Terraform CLI supported by this module
     - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v2
+      uses: hashicorp/setup-terraform@v3
       with: 
         terraform_version: '~> 1.2'
 

@@ -29,7 +29,7 @@ jobs:
 
     # Install the earliest version of Terraform CLI supported by this module
     - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v3
+      uses: hashicorp/setup-terraform@v4
       with: 
         terraform_version: '~> 1.2'
 

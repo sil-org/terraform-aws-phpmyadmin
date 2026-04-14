@@ -41,17 +41,23 @@ resource "aws_alb_listener_rule" "phpmyadmin" {
 }
 
 module "ecsservice" {
-  source             = "github.com/sil-org/terraform-modules//aws/ecs/service-only?ref=8.13.0"
+  source  = "sil-org/ecs-service/aws"
+  version = "~> 0.3.0"
+
   cluster_id         = var.ecs_cluster_id
   service_name       = "pma-${var.app_name}"
   service_env        = var.app_env
   container_def_json = jsonencode(local.task_def)
   desired_count      = var.enable ? 1 : 0
-  tg_arn             = aws_alb_target_group.phpmyadmin.arn
-  lb_container_name  = "phpMyAdmin"
-  lb_container_port  = "80"
   ecsServiceRole_arn = var.ecsServiceRole_arn
+
+  load_balancer = [{
+    target_group_arn = aws_alb_target_group.phpmyadmin.arn
+    container_name   = "phpMyAdmin"
+    container_port   = 80
+  }]
 }
+
 
 /*
  * Create Cloudflare DNS record
